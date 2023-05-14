@@ -1,19 +1,10 @@
-// let page = 1;
-// let q = null;
-    
-// async function fetchPhotos(q, page) {
-//     const URL = 'https://pixabay.com/api/';
-//     const key = '34884998-68d78d4359a242f869564c2a4'
-    
-//     return await fetch(`${URL}?key=${key}&q=${q}&image_type=photo&orientation=horisontal&safesearch=true&page=${page}&per_page=12`).then(response => {
-//         if (response.ok) {
-//             return response.data.hits;
-//         }
-//     })
-// };
+import axios from 'axios';
+import { URL, DEFAULT_OPTIONS } from './constans';
 
-// const API = { fetchPhotos, page, q };
+const fetchPhotos = async (requestParam, prevPage) => {
+  const { data } = await axios.get(URL, { params: { ...DEFAULT_OPTIONS, q: requestParam, page: prevPage } });
 
-// export default API;
+  return { ...data, totalPage: Math.ceil(data.totalHits / DEFAULT_OPTIONS.per_page) };
+}
 
-// https://pixabay.com/api/?q=cat&page=1&key=your_key&image_type=photo&orientation=horizontal&per_page=12
+export default fetchPhotos;
