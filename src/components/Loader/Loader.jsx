@@ -7,12 +7,6 @@ export const Loader = () => (
             width="80" 
             radius="9"
             color="#ff0101" 
-            // wrapperStyle={{
-            //     position: "fixed",
-            //     top: "95%",
-            //     left: "50%",
-            //     transform: "translateX(-50%)",
-            // }}
             ariaLabel="three-dots-loading"
             visible={true}
         />
